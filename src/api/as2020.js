@@ -25,8 +25,7 @@ router.post('/create-pdf', (req, res) => {
     } else {
       console.log(str)
     }
-    pdf.create(str).toFile('./src/api/assets/result.pdf', (err) => {
-      console.log('babu')
+    str && pdf.create(str).toFile('./src/api/assets/result.pdf', (err) => {
       if (err) {
         res.send(err);
       }
