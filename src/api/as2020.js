@@ -3,11 +3,18 @@ const express = require('express');
 const monk = require('monk');
 let ejs = require('ejs');
 
+// const pdf = require('html-pdf');
+// const pdfTemplate = require('./pdf');
+// const Joi = require('@hapi/joi');
+
 const db = monk(process.env.MONGO_URI);
 db.then(() => {
   console.log('REPO3 : Connected correctly to server');
 });
+
+//collections
 const REPO3 = db.get('REPO3');
+const DailyReport = db.get('DailyReport');
 
 const router = express.Router();
 
@@ -44,7 +51,7 @@ router.get('/partydata/:pn/:bn', async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-})
+});
 
 //get party data
 router.get('/partydata/', async (req, res, next) => {
@@ -56,6 +63,16 @@ router.get('/partydata/', async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-})
+});
+
+//getDailyReport
+router.get('/dailyreport/', async (req, res, next) => {
+  try {
+    const items = await DailyReport.find({});
+    res.json(items);
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = router;
