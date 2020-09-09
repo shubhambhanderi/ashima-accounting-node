@@ -15,6 +15,7 @@ db.then(() => {
 //collections
 const REPO3 = db.get('REPO3');
 const DailyReport = db.get('DailyReport');
+const BeamStock = db.get('BeamStock');
 
 const router = express.Router();
 
@@ -69,6 +70,16 @@ router.get('/partydata/', async (req, res, next) => {
 router.get('/dailyreport/', async (req, res, next) => {
   try {
     const items = await DailyReport.find({});
+    res.json(items);
+  } catch (error) {
+    next(error);
+  }
+});
+
+//getBeamStock
+router.get('/beamstock/', async (req, res, next) => {
+  try {
+    const items = await BeamStock.find({});
     res.json(items);
   } catch (error) {
     next(error);
