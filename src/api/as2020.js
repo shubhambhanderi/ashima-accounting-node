@@ -28,7 +28,8 @@ router.get('/listofparties', async (req, res, next) => {
           "$group": {
             _id: {
               partyName: "$partyName",
-              brokerName: "$brokerName"
+              brokerName: "$brokerName",
+              OYN: "$OYN",
             }
           }
         }
