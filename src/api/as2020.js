@@ -16,6 +16,7 @@ db.then(() => {
 const REPO3 = db.get('REPO3');
 const DailyReport = db.get('DailyReport');
 const BeamStock = db.get('BeamStock');
+const WorpingMeter = db.get('WorpingMeter');
 
 const router = express.Router();
 
@@ -81,6 +82,16 @@ router.get('/dailyreport/', async (req, res, next) => {
 router.get('/beamstock/', async (req, res, next) => {
   try {
     const items = await BeamStock.find({});
+    res.json(items);
+  } catch (error) {
+    next(error);
+  }
+});
+
+//getWorpingMeter
+router.get('/worpingmeter/', async (req, res, next) => {
+  try {
+    const items = await WorpingMeter.find({});
     res.json(items);
   } catch (error) {
     next(error);
