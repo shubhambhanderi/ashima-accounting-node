@@ -17,6 +17,7 @@ const REPO3 = db.get('REPO3');
 const DailyReport = db.get('DailyReport');
 const BeamStock = db.get('BeamStock');
 const WorpingMeter = db.get('WorpingMeter');
+const StockReport = db.get('StockReport');
 
 const router = express.Router();
 
@@ -92,6 +93,16 @@ router.get('/beamstock/', async (req, res, next) => {
 router.get('/worpingmeter/', async (req, res, next) => {
   try {
     const items = await WorpingMeter.find({});
+    res.json(items);
+  } catch (error) {
+    next(error);
+  }
+});
+
+//getStockReport
+router.get('/stockreport/', async (req, res, next) => {
+  try {
+    const items = await StockReport.find({});
     res.json(items);
   } catch (error) {
     next(error);
