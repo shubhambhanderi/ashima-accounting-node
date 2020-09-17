@@ -57,7 +57,7 @@ router.post("/login", (req, res, next) => {
 
     let userWithoutPassword = { ...user, password: null };
 
-    const token = jwt.sign(userWithoutPassword, process.env.SECRET);
+    const token = jwt.sign(userWithoutPassword, process.env.SECRET, { expiresIn: '3h' });
 
     // Send the token back to the client app.
     return res.send({ token: token, user: user, success: true })
