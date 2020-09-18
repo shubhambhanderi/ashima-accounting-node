@@ -18,8 +18,19 @@ const DailyReport = db.get('DailyReport');
 const BeamStock = db.get('BeamStock');
 const WorpingMeter = db.get('WorpingMeter');
 const StockReport = db.get('StockReport');
+const XH69Report = db.get('XH69Report');
 
 const router = express.Router();
+
+//get Report
+router.get(('/report'), async (req, res, next) => {
+  try {
+    const items = await XH69Report.find({});
+    res.json(items);
+  } catch (error) {
+    next(error);
+  }
+});
 
 //get list of parties
 router.get('/listofparties', async (req, res, next) => {
