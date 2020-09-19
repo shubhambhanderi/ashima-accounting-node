@@ -18,9 +18,20 @@ const DailyReport = db.get('DailyReport');
 const BeamStock = db.get('BeamStock');
 const WorpingMeter = db.get('WorpingMeter');
 const StockReport = db.get('StockReport');
-const XH69Report = db.get('XH69Report');
+const MetaData = db.get('MetaData');
 
 const router = express.Router();
+
+
+//get Date
+router.get(('/metadata'), async (req, res, next) => {
+  try {
+    const items = await MetaData.find({});
+    res.json(items);
+  } catch (error) {
+    next(error);
+  }
+});
 
 //get Report
 router.get(('/report'), async (req, res, next) => {
