@@ -18,6 +18,7 @@ const DailyReport = db.get('DailyReport');
 const BeamStock = db.get('BeamStock');
 const WorpingMeter = db.get('WorpingMeter');
 const StockReport = db.get('StockReport');
+const XH69Report = db.get('XH69Report');
 const MetaData = db.get('MetaData');
 
 const router = express.Router();
